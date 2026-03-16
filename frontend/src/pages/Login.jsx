@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { FaLeaf, FaEnvelope, FaLock, FaCheckCircle } from "react-icons/fa";
+import { FaEnvelope, FaLock, FaCheckCircle } from "react-icons/fa";
+import logo from "../assets/plantshare.png";
 import api from "../api/axios";
 
 export default function Login() {
@@ -34,43 +35,34 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden flex items-center justify-center p-4">
+    <div className="min-h-screen bg-[#F7F9F4] flex items-center justify-center p-4">
       {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-green-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-emerald-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
-        <div className="absolute top-1/2 left-1/2 w-80 h-80 bg-teal-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
-      </div>
+      
 
       {/* Main Container */}
       <div className="relative z-10 w-full max-w-6xl grid md:grid-cols-2 gap-8 items-center">
         
         {/* Left Side - Brand Section */}
-        <div className="hidden md:flex flex-col justify-center items-start text-white space-y-8 px-8">
+        <div className="hidden md:flex flex-col justify-center items-start text-[#2B2B2B] space-y-8 px-8">
           <div className="flex items-center space-x-3">
-            <div className="w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-600 rounded-2xl flex items-center justify-center shadow-xl">
-              <FaLeaf className="text-3xl text-white" />
-            </div>
-            <h1 className="text-5xl font-black tracking-tighter">PlantShare</h1>
+            <img src={logo} alt="PlantShare Logo" className="h-16 w-16 rounded-lg shadow-xl" />
+            <h1 className="text-5xl font-black tracking-tighter text-[#3F7A0A]">PlantShare</h1>
           </div>
-          
           <div className="space-y-4">
-            <p className="text-2xl font-light text-gray-200 leading-relaxed">
+            <p className="text-2xl font-light text-[#2B2B2B] leading-relaxed">
               Connect with plant enthusiasts worldwide. Share your garden, grow your community.
             </p>
-            
-            {/* Feature List */}
             <div className="space-y-3 pt-6">
-              <div className="flex items-center space-x-3 text-gray-300">
-                <FaCheckCircle className="text-green-400 text-xl" />
+              <div className="flex items-center space-x-3 text-[#3F7A0A]">
+                <FaCheckCircle className="text-[#C8A96A] text-xl" />
                 <span className="text-lg">Share your plant collections</span>
               </div>
-              <div className="flex items-center space-x-3 text-gray-300">
-                <FaCheckCircle className="text-green-400 text-xl" />
+              <div className="flex items-center space-x-3 text-[#3F7A0A]">
+                <FaCheckCircle className="text-[#C8A96A] text-xl" />
                 <span className="text-lg">Get care tips from experts</span>
               </div>
-              <div className="flex items-center space-x-3 text-gray-300">
-                <FaCheckCircle className="text-green-400 text-xl" />
+              <div className="flex items-center space-x-3 text-[#3F7A0A]">
+                <FaCheckCircle className="text-[#C8A96A] text-xl" />
                 <span className="text-lg">Join our thriving community</span>
               </div>
             </div>
@@ -79,21 +71,19 @@ export default function Login() {
 
         {/* Right Side - Login Card */}
         <div className="w-full max-w-md mx-auto">
-          <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl shadow-2xl p-8 md:p-10 hover:border-white/30 transition duration-300">
+          <div className="bg-[#EFEDE6] border border-[#C8A96A] rounded-3xl shadow-2xl p-8 md:p-10 hover:border-[#C8A96A]/80 transition duration-300">
             
             {/* Mobile Logo */}
             <div className="md:hidden flex flex-col items-center mb-8">
-              <div className="w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-600 rounded-2xl flex items-center justify-center shadow-xl mb-4">
-                <FaLeaf className="text-3xl text-white" />
-              </div>
-              <h1 className="text-3xl font-bold text-white">PlantShare</h1>
-              <p className="text-gray-300 text-sm mt-2">Grow together, share naturally</p>
+              <img src={logo} alt="PlantShare Logo" className="h-16 w-16 rounded-lg shadow-xl mb-4" />
+              <h1 className="text-3xl font-bold text-[#3F7A0A]">PlantShare</h1>
+              <p className="text-[#2B2B2B] text-sm mt-2">Grow together, share naturally</p>
             </div>
 
             {/* Desktop Logo Text */}
             <div className="hidden md:block mb-8">
-              <h2 className="text-3xl font-bold text-white mb-2">Welcome Back</h2>
-              <p className="text-gray-400">Login to your PlantShare account</p>
+              <h2 className="text-3xl font-bold text-[#3F7A0A] mb-2">Welcome Back</h2>
+              <p className="text-[#2B2B2B]">Login to your PlantShare account</p>
             </div>
 
             {/* Error Message */}

@@ -36,6 +36,8 @@
 import Navbar from "../components/Navbar";
 import { FaHeart, FaComment } from "react-icons/fa";
 import { useEffect, useState } from "react";
+import { jwtDecode } from "jwt-decode";
+import logo from "../assets/plantshare.png";
 
 const placeholderPosts = [
   {
@@ -102,17 +104,32 @@ function PostCard({ post }) {
 
 export default function Feed() {
   const [posts, setPosts] = useState([]);
+  const [username, setUsername] = useState("");
 
   useEffect(() => {
     // Replace with API call to fetch posts
     setTimeout(() => setPosts(placeholderPosts), 400);
+    // Get username from JWT
+    const token = localStorage.getItem("token");
+    if (token) {
+      try {
+        const decoded = jwtDecode(token);
+        setUsername(decoded.username || "");
+      } catch {}
+    }
   }, []);
 
   return (
-    <div className="min-h-screen bg-green-50">
+    <div className="min-h-screen bg-[#F7F9F4]">
       <Navbar />
       <div className="max-w-5xl mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold text-green-800 mb-6">Feed</h1>
+        <h1 className="text-4xl font-extrabold text-[#3F7A0A] mb-2 tracking-tight flex items-center gap-3">
+          <img src={logo} alt="PlantShare Logo" className="h-10 w-10 rounded-lg shadow-md inline-block" />
+          Feed
+        </h1>
+        {username && (
+          <div className="mb-6 text-xl text-[#2E5E0F] font-semibold animate-fadein bg-[#EFEDE6] px-6 py-3 rounded-lg shadow">Welcome, {username}!</div>
+        )}
         <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {posts.length === 0
             ? Array.from({ length: 3 }).map((_, i) => (
@@ -132,6 +149,9 @@ export default function Feed() {
           }
           @keyframes fadeIn {
             to { opacity: 1; }
+          }
+          .animate-fadein {
+            animation: fadeIn 1s;
           }
         `}
       </style>
